@@ -1,8 +1,7 @@
-import React, { useState } from 'react';
-import styles from '../styles';
+import { useState } from 'react';
 import { View, Text, TextInput, Button, Alert, StyleSheet } from 'react-native';
-
 import UserService from '../service/UserService';
+import styles from '../styles';
 
 function Register({navigation}) {
     const [user, setUser] = useState({

@@ -13,26 +13,19 @@ import Product from './components/Product';
 
 const Stack = createStackNavigator();
 
-export default function App() {
-  return (
-    <NavigationContainer>
-      <Stack.Navigator initialRouteName="Login">
-        <Stack.Screen name="Login" component={Login} />
-        <Stack.Screen name="Register" component={Register} />
-        <Stack.Screen name="Home" component={Home} />
-        <Stack.Screen name="ShoppingCart" component={ShoppingCart} />
-        <Stack.Screen name="Product" component={Product} />
-      </Stack.Navigator>
-      <StatusBar style="auto" />
-    </NavigationContainer>
-  );
+function App() {
+    return (
+        <NavigationContainer>
+            <Stack.Navigator initialRouteName="Login">
+            <Stack.Screen name="Login" component={Login} />
+            <Stack.Screen name="Register" component={Register} />
+            <Stack.Screen name="Home" component={Home} />
+            <Stack.Screen name="ShoppingCart" component={ShoppingCart} />
+            <Stack.Screen name="Product" component={Product} />
+            </Stack.Navigator>
+            <StatusBar style="auto" />
+        </NavigationContainer>
+    );
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+export default App;
