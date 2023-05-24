@@ -5,11 +5,11 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 
 // Importa tus componentes
-import Login from './Login';
-import Register from './Register';
-import Home from './Home';
-import ShoppingCart from './ShoppingCart';
-import Product from './Product';
+import Login from './components/Login';
+import Register from './components/Register';
+import Home from './components/Home';
+import ShoppingCart from './components/ShoppingCart';
+import Product from './components/Product';
 
 const Stack = createStackNavigator();
 

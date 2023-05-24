@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "carroDeCompra",
-    "slug": "carroDeCompra",
+    "name": "ReactNative_ShoppingCart",
+    "slug": "ReactNative_ShoppingCart",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { View, Text, Button, StyleSheet, FlatList, TouchableOpacity } from 'react-native';
-import Product from './Product'; 
+import Product from './Product';
 import ShoppingCart from './ShoppingCart'; // Importa el componente ShoppingCart
 
 const productos = [
@@ -43,10 +43,10 @@ export default function Home({ navigation }) {
       <Text style={styles.subtitle}>Nuestros productos:</Text>
       <FlatList
         data={productos}
-        renderItem={({ item }) => 
-          <Product 
-            product={item} 
-            addToCart={addToCart} 
+        renderItem={({ item }) =>
+          <Product
+            product={item}
+            addToCart={addToCart}
           />}
         keyExtractor={item => item.id}
       />
