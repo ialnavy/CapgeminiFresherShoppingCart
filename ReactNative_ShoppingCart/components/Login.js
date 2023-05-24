@@ -1,14 +1,14 @@
 import React, { useState } from 'react';
 import { View, Text, TextInput, Button, Alert, StyleSheet } from 'react-native';
 
-export default function Login() {
+export default function Login({ navigation }) {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
 
   const loginUser = () => {
     if(username === 'Dummy123' && password === '123Dummy321') {
       Alert.alert('¡Exito!', 'Has iniciado sesión correctamente');
-      // Navega a la página de inicio
+      navigation.navigate("Home");
     } else {
       Alert.alert('Error', 'Las credenciales son incorrectas');
     }

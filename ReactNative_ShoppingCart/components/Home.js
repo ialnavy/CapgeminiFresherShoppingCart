@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { View, Text, Button, StyleSheet, FlatList, TouchableOpacity } from 'react-native';
 import Product from './Product';
 import ShoppingCart from './ShoppingCart'; // Importa el componente ShoppingCart
+import fbDB from '../persistence/firebase';
 
 const productos = [
   // Nota: Cada producto necesita también tener las propiedades image, description, category, y price
