@@ -9,16 +9,16 @@ import '@firebase/firestore';
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
-    /* RELLENAR CON LOS DATOS DE TU DB */
+    /* TODO: RELLENAR CON LOS DATOS DE TU DB */
+
 };
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 const fbDB = {
      app: app,
-     db: () => { return getFirestore(app); },
      collections: {
-         users: () => { return collection(db, "users"); }
+         users: () => { return collection(getFirestore(app), "users"); }
      }
  };
 

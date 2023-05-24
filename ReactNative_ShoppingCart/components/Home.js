@@ -12,7 +12,7 @@ const productos = [
   // Agrega más productos aquí
 ];
 
-export default function Home({ navigation }) {
+function Home({ navigation }) {
   const [cart, setCart] = useState([]);
   const username = 'Dummy123'; // Hardcodea el nombre de usuario
 
@@ -78,3 +78,5 @@ const styles = StyleSheet.create({
     marginBottom: 20,
   },
 });
+
+export default Home;
