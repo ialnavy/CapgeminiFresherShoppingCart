@@ -2,6 +2,7 @@ import { useContext } from 'react';
 import { View, Text, Image, Button, StyleSheet } from 'react-native';
 import styles from '../styles';
 
+
 import AppContext from '../AppContext';
 
 function Product({navigation, product}) {
