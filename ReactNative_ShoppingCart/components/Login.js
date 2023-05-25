@@ -1,46 +1,47 @@
-import React, { useState } from 'react';
-import { View, Text, TextInput, Button, Alert, StyleSheet } from 'react-native';
+import { useState, useContext } from 'react';
+import { View, Text, TextInput, Button, Alert } from 'react-native';
+import styles from '../styles';
 
-export default function Login() {
-  const [username, setUsername] = useState('');
-  const [password, setPassword] = useState('');
+import AppContext from '../AppContext';
+import UserService from '../service/UserService';
+import ProductService from '../service/ProductService';
 
-  const loginUser = () => {
-    if(username === 'Dummy123' && password === '123Dummy321') {
-      Alert.alert('¡Exito!', 'Has iniciado sesión correctamente');
-      // Navega a la página de inicio
-    } else {
-      Alert.alert('Error', 'Las credenciales son incorrectas');
-    }
-  };
+function Login({navigation}) {
+    const appContext = useContext(AppContext);
+    const [userFields, setUserFields] = useState({
+        username: '',
+        password: ''
+    });
 
-  return (
-    <View style={styles.container}>
-      <Text style={styles.label}>Nombre de usuario</Text>
-      <TextInput style={styles.input} onChangeText={text => setUsername(text)} value={username} />
-      <Text style={styles.label}>Contraseña</Text>
-      <TextInput style={styles.input} onChangeText={text => setPassword(text)} value={password} secureTextEntry={true} />
-      <Button title="Iniciar sesión" onPress={loginUser} />
-    </View>
-  );
+    const loginUser = async () => {
+        if (!(await UserService.checkLogin(userFields.username, userFields.password))) {
+            Alert.alert('Error', 'Las credenciales son incorrectas');
+            return;
+        }
+        appContext.setUser(await UserService.readByUsername(userFields.username));
+        appContext.setProducts(await ProductService.readAllProducts());
+        /* DEBUG */
+        if (appContext.products.length === undefined || appContext.products.length === 0) {
+            await ProductService.initialiseDefaultProducts();
+            appContext.setProducts(await ProductService.readAllProducts());
+        }
+        /* ----- */
+        setUserFields({ username: '', password: '' });
+        navigation.navigate("Home");
+    };
+
+    return (
+        <View style={styles.container}>
+            <Text style={styles.label}>Nombre de usuario</Text>
+            <TextInput style={styles.input} onChangeText = {(text) => { setUserFields({ ...userFields, username: text }); }} value={userFields.username} />
+
+            <Text style={styles.label}>Contraseña</Text>
+            <TextInput style={styles.input} onChangeText = {(text) => { setUserFields({ ...userFields, password: text }); }} value={userFields.password} secureTextEntry={true} />
+
+            <Button title="Iniciar sesión" onPress = {loginUser} />
+            <Button title="Ir al registro" onPress = { () => { navigation.navigate("Register"); } } />
+        </View>
+    );
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    padding: 20,
-  },
-  label: {
-    fontSize: 18,
-    marginBottom: 10,
-  },
-  input: {
-    borderWidth: 1,
-    borderColor: '#ddd',
-    padding: 10,
-    fontSize: 18,
-    borderRadius: 6,
-    marginBottom: 15,
-  },
-});
+ export default Login;
