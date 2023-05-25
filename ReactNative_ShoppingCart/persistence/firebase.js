@@ -9,7 +9,7 @@ import '@firebase/firestore';
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
-    /* RELLENAR CON LOS DATOS DE TU DB */
+    /* TODO: RELLENAR CON LOS DATOS DE TU DB */
 
 };
 

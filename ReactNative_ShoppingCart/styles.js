@@ -10,7 +10,7 @@ const styles = StyleSheet.create({
         borderColor: '#ddd',
         borderWidth: 1,
         borderRadius: 10,
-        margin: 10,
+        margin: 10
     }, 
     label: {
         fontSize: 18,
