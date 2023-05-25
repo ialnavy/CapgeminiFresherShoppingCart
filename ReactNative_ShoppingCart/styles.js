@@ -15,6 +15,22 @@ const styles = StyleSheet.create({
         fontSize: 18,
         borderRadius: 6,
         marginBottom: 15
+    }, title: {
+        fontSize: 24,
+        fontWeight: 'bold',
+        marginBottom: 20,
+        textDecorationLine: 'underline'
+    },
+    subtitle: {
+        fontSize: 20,
+        fontWeight: 'bold',
+        marginTop: 20,
+        marginBottom: 10
+    },
+    buttons: {
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        marginBottom: 20
     }
 });
 

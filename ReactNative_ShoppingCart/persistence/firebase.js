@@ -10,7 +10,6 @@ import '@firebase/firestore';
 // Your web app's Firebase configuration
 const firebaseConfig = {
     /* TODO: RELLENAR CON LOS DATOS DE TU DB */
-
 };
 
 // Initialize Firebase

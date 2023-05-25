@@ -20,6 +20,11 @@ const UserService = {
             return false;
         await UserRepository.create(user);
         return true;
+    }, readByUsername: async (username) => {
+        if (username === undefined || username === null || username === '')
+            return null;
+
+        return (await UserRepository.readByUsername(username));
     }
 };
 

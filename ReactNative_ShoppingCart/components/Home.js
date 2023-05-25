@@ -1,8 +1,10 @@
-import React, { useState } from 'react';
-import { View, Text, Button, StyleSheet, FlatList, TouchableOpacity } from 'react-native';
+import { useState, useContext } from 'react';
+import { View, Text, Button, FlatList, TouchableOpacity } from 'react-native';
+import styles from '../styles';
+
 import Product from './Product';
 import ShoppingCart from './ShoppingCart'; // Importa el componente ShoppingCart
-import fbDB from '../persistence/firebase';
+import AppContext from '../AppContext';
 
 const productos = [
   // Nota: Cada producto necesita también tener las propiedades image, description, category, y price
@@ -12,71 +14,40 @@ const productos = [
   // Agrega más productos aquí
 ];
 
-function Home({ navigation }) {
-  const [cart, setCart] = useState([]);
-  const username = 'Dummy123'; // Hardcodea el nombre de usuario
+function Home({navigation}) {
+    const userContext = useContext(AppContext);
+    const [cart, setCart] = useState([]);
 
-  const addToCart = (product) => {
-    setCart(currentCart => [...currentCart, product]);
-  };
+    const addToCart = (product) => {
+        setCart(currentCart => [...currentCart, product]);
+    };
 
-  const clearCart = () => {
-    setCart([]);
-  };
+    const clearCart = () => {
+        setCart([]);
+    };
 
-  const navigateToCart = () => {
-    navigation.navigate('ShoppingCart', { cart, clearCart });
-  };
+    const navigateToCart = () => {
+        navigation.navigate('ShoppingCart', { cart, clearCart });
+    };
 
-  return (
-    <View style={styles.container}>
-      <TouchableOpacity onPress={() => {/* Navega al perfil de usuario */}}>
-        <Text style={styles.title}>¡Bienvenido a nuestra tienda, {username}!</Text>
-      </TouchableOpacity>
+    return (
+        <View style={styles.container}>
+            <TouchableOpacity onPress={() => {/* Navega al perfil de usuario */}}>
+                <Text style={styles.title}>¡Bienvenido a nuestra tienda, {userContext.user.username}!</Text>
+            </TouchableOpacity>
 
-      <View style={styles.buttons}>
-        <Button title="Categoría 1" onPress={() => {/* Navega a la Categoría 1 */}} />
-        <Button title="Categoría 2" onPress={() => {/* Navega a la Categoría 2 */}} />
-        <Button title="Carrito de compras" onPress={navigateToCart} />
-        <Button title="Cerrar sesión" onPress={() => {/* Cierra la sesión del usuario */}} />
-      </View>
+            <View style={styles.buttons}>
+                <Button title="Categoría 1" onPress={() => {/* Navega a la Categoría 1 */}} />
+                <Button title="Categoría 2" onPress={() => {/* Navega a la Categoría 2 */}} />
+                <Button title="Carrito de compras" onPress={navigateToCart} />
+                <Button title="Cerrar sesión" onPress={() => {/* Cierra la sesión del usuario */}} />
+            </View>
 
-      <Text style={styles.subtitle}>Nuestros productos:</Text>
-      <FlatList
-        data={productos}
-        renderItem={({ item }) =>
-          <Product
-            product={item}
-            addToCart={addToCart}
-          />}
-        keyExtractor={item => item.id}
-      />
-    </View>
-  );
+            <Text style={styles.subtitle}>Nuestros productos:</Text>
+            <FlatList data={productos} keyExtractor={item => item.id}
+                renderItem={ ({ item }) => <Product product={item} addToCart={addToCart} /> } />
+        </View>
+    );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    padding: 20,
-  },
-  title: {
-    fontSize: 24,
-    fontWeight: 'bold',
-    marginBottom: 20,
-    textDecorationLine: 'underline',
-  },
-  subtitle: {
-    fontSize: 20,
-    fontWeight: 'bold',
-    marginTop: 20,
-    marginBottom: 10,
-  },
-  buttons: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    marginBottom: 20,
-  },
-});
 
 export default Home;
