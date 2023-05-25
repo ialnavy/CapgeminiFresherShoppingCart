@@ -10,7 +10,7 @@ export default function Product({ product, addToCart }) {
       <Text style={styles.description}>{product.description}</Text>
       <Text style={styles.category}>Categoría: {product.category}</Text>
       <Text style={styles.price}>Precio: {product.price}$</Text>
-      <Button title="Agregar al carro" onPress={() => addToCart(product)} />
+      <Button  style={styles.button} title="Agregar al carro" onPress={() => addToCart(product)} />
     </View>
   );
 }

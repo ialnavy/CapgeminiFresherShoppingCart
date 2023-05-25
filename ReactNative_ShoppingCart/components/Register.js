@@ -52,8 +52,9 @@ function Register({ navigation }) {
         secureTextEntry={true}
       />
 
-      <Button title="Registrarse" onPress={registerUser} />
+      <Button style={styles.button} title="Registrarse" onPress={registerUser} />
       <Button
+        style={styles.button}
         title="Ir al inicio de sesión"
         onPress={() => {
           navigation.navigate("Login");

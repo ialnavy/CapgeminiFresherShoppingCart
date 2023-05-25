@@ -30,7 +30,7 @@ function Home({navigation}) {
                 <Text style={styles.title}>¡Bienvenido a nuestra tienda, {appContext.user.username}!</Text>
             </TouchableOpacity>
 
-            <View style={styles.buttons}>
+            <View style={styles.button}>
                 <Button title="Categoría 1" onPress={() => {/* Navega a la Categoría 1 */}} />
                 <Button title="Categoría 2" onPress={() => {/* Navega a la Categoría 2 */}} />
                 <Button title="Carrito de compras" onPress={navigateToCart} />
