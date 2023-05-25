@@ -1,11 +1,13 @@
 import { useState, useContext } from 'react';
 import { View, Text, TextInput, Button, Alert } from 'react-native';
-import UserService from '../service/UserService';
 import styles from '../styles';
+
 import AppContext from '../AppContext';
+import UserService from '../service/UserService';
+import ProductService from '../service/ProductService';
 
 function Login({navigation}) {
-    const userContext = useContext(AppContext);
+    const appContext = useContext(AppContext);
     const [userFields, setUserFields] = useState({
         username: '',
         password: ''
@@ -16,7 +18,14 @@ function Login({navigation}) {
             Alert.alert('Error', 'Las credenciales son incorrectas');
             return;
         }
-        userContext.setUser(await UserService.readByUsername(userFields.username));
+        appContext.setUser(await UserService.readByUsername(userFields.username));
+        appContext.setProducts(await ProductService.readAllProducts());
+        /* DEBUG */
+        if (appContext.products.length === undefined || appContext.products.length === 0) {
+            await ProductService.initialiseDefaultProducts();
+            appContext.setProducts(await ProductService.readAllProducts());
+        }
+        /* ----- */
         setUserFields({ username: '', password: '' });
         navigation.navigate("Home");
     };

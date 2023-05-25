@@ -21,9 +21,12 @@ function App() {
         password: '',
         email: ''
     });
+    const [products, setProducts] = useState([]);
     const userContext = {
         user: user,
-        setUser: setUser
+        setUser: setUser,
+        products: products,
+        setProducts: setProducts
     };
     return (
         <AppContext.Provider value={userContext}>
