@@ -20,12 +20,13 @@ function Login({navigation}) {
         }
         appContext.setUser(await UserService.readByUsername(userFields.username));
         appContext.setProducts(await ProductService.readAllProducts());
-        /* DEBUG */
+        appContext.setShoppingCart([]);
+        /* DEBUG
         if (appContext.products.length === undefined || appContext.products.length === 0) {
             await ProductService.initialiseDefaultProducts();
             appContext.setProducts(await ProductService.readAllProducts());
         }
-        /* ----- */
+         ----- */
         setUserFields({ username: '', password: '' });
         navigation.navigate("Home");
     };

@@ -1,7 +1,10 @@
 import { StyleSheet } from 'react-native';
 
 const styles = StyleSheet.create({
-    container: {
+    background: {
+        flex: 1,
+        resizeMode: 'cover'
+    }, container: {
         flex: 1,
         justifyContent: 'center',
         padding: 20
@@ -20,17 +23,47 @@ const styles = StyleSheet.create({
         fontWeight: 'bold',
         marginBottom: 20,
         textDecorationLine: 'underline'
-    },
-    subtitle: {
+    }, subtitle: {
         fontSize: 20,
         fontWeight: 'bold',
         marginTop: 20,
         marginBottom: 10
-    },
-    buttons: {
+    }, description: {
+        fontSize: 16,
+        marginTop: 10
+    }, category: {
+        fontSize: 16,
+        fontStyle: 'italic',
+        marginTop: 10
+    }, buttons: {
         flexDirection: 'row',
         justifyContent: 'space-between',
         marginBottom: 20
+    }, total: {
+        fontSize: 18,
+        marginBottom: 10
+    }, price: {
+        fontSize: 18,
+        color: '#ff0000',
+        marginTop: 10,
+        marginBottom: 20
+    }, shipping: {
+        fontSize: 18,
+        marginBottom: 20,
+        color: 'green'
+    }, product: {
+        flexDirection: 'row',
+        alignItems: 'center',
+        marginBottom: 10
+    }, image: {
+        width: '100%',
+        height: 200,
+    }, productImage: {
+        width: 50,
+        height: 50,
+        marginRight: 10
+    }, productText: {
+        fontSize: 18
     }
 });
 

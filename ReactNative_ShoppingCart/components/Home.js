@@ -10,19 +10,6 @@ import ProductService from '../service/ProductService';
 
 function Home({navigation}) {
     const appContext = useContext(AppContext);
-    const [cart, setCart] = useState([]);
-
-    const addToCart = (product) => {
-        setCart(currentCart => [...currentCart, product]);
-    };
-
-    const clearCart = () => {
-        setCart([]);
-    };
-
-    const navigateToCart = () => {
-        navigation.navigate('ShoppingCart', { cart, clearCart });
-    };
 
     return (
         <View style={styles.container}>
@@ -33,13 +20,13 @@ function Home({navigation}) {
             <View style={styles.buttons}>
                 <Button title="Categoría 1" onPress={() => {/* Navega a la Categoría 1 */}} />
                 <Button title="Categoría 2" onPress={() => {/* Navega a la Categoría 2 */}} />
-                <Button title="Carrito de compras" onPress={navigateToCart} />
+                <Button title="Carrito de compras" onPress={ () => { navigation.navigate('ShoppingCart'); } } />
                 <Button title="Cerrar sesión" onPress={() => {/* Cierra la sesión del usuario */}} />
             </View>
 
             <Text style={styles.subtitle}>Nuestros productos:</Text>
             <FlatList data={appContext.products} keyExtractor={item => item.id}
-                renderItem={ ({ item }) => <Product product={item} addToCart={addToCart} /> } />
+                renderItem={ ({ item }) => <Product product={item} /> } />
         </View>
     );
 }

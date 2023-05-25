@@ -22,11 +22,14 @@ function App() {
         email: ''
     });
     const [products, setProducts] = useState([]);
+    const [shoppingCart, setShoppingCart] = useState([]);
     const userContext = {
         user: user,
         setUser: setUser,
         products: products,
-        setProducts: setProducts
+        setProducts: setProducts,
+        shoppingCart: shoppingCart,
+        setShoppingCart: setShoppingCart
     };
     return (
         <AppContext.Provider value={userContext}>
